@@ -512,7 +512,59 @@ button.nav-toggle.is-open span:last-child {
   fill: currentColor;
 }
 
-/* Mobile dark: soft fade into page bg instead of circle cut */
+/* Dark theme: dissolve hero into page bg (no hard SVG cut edge) */
+html[data-theme='dark'] .hero {
+  padding-bottom: clamp(5rem, 16vw, 9rem);
+}
+
+html[data-theme='dark'] .hero__media {
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    #000 0%,
+    #000 48%,
+    rgba(0, 0, 0, 0.85) 62%,
+    rgba(0, 0, 0, 0.45) 78%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    180deg,
+    #000 0%,
+    #000 48%,
+    rgba(0, 0, 0, 0.85) 62%,
+    rgba(0, 0, 0, 0.45) 78%,
+    transparent 100%
+  );
+}
+
+html[data-theme='dark'] .hero__arc {
+  height: clamp(160px, 28vw, 280px);
+  color: transparent;
+  bottom: -2px;
+}
+
+html[data-theme='dark'] .hero__arc::before {
+  -webkit-mask-image: none;
+  mask-image: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    color-mix(in srgb, var(--bg) 18%, transparent) 28%,
+    color-mix(in srgb, var(--bg) 55%, transparent) 55%,
+    color-mix(in srgb, var(--bg) 92%, transparent) 82%,
+    var(--bg) 100%
+  );
+}
+
+html[data-theme='dark'] .hero__arc svg {
+  display: none;
+}
+
+html[data-theme='dark'] .hero__dots {
+  bottom: clamp(2rem, 8vw, 4.5rem);
+}
+
 @media (max-width: 899px) {
   html[data-theme='dark'] .hero {
     padding-bottom: 5.5rem;
@@ -520,25 +572,6 @@ button.nav-toggle.is-open span:last-child {
 
   html[data-theme='dark'] .hero__arc {
     height: clamp(140px, 36vw, 220px);
-    color: transparent;
-  }
-
-  html[data-theme='dark'] .hero__arc::before {
-    -webkit-mask-image: none;
-    mask-image: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background: linear-gradient(
-      180deg,
-      transparent 0%,
-      color-mix(in srgb, var(--bg) 28%, transparent) 38%,
-      color-mix(in srgb, var(--bg) 78%, transparent) 72%,
-      var(--bg) 100%
-    );
-  }
-
-  html[data-theme='dark'] .hero__arc svg {
-    display: none;
   }
 
   html[data-theme='dark'] .hero__dots {
