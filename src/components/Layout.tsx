@@ -1,3 +1,4 @@
+import { asset } from '../asset'
 import {
   useEffect,
   useRef,
@@ -205,7 +206,7 @@ export function Header({ onCallback }: { onCallback: () => void }) {
     >
       <div className="wrap-wide site-header__inner">
         <Link className="brand" to="/" aria-label="City Sound home">
-          <img src="/logo.png" alt="City Sound" width={54} height={54} />
+          <img src={asset('logo.png')} alt="City Sound" width={54} height={54} />
         </Link>
 
         <nav className="site-nav" aria-label="Primary">
@@ -320,7 +321,7 @@ export function Footer() {
     <footer className="site-footer">
       <div className="wrap site-footer__inner">
         <Link className="brand" to="/">
-          <img src="/logo.png" alt="" width={48} height={48} />
+          <img src={asset('logo.png')} alt="" width={48} height={48} />
           <span>
             City <em>Sound</em>
           </span>
